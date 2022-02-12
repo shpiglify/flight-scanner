@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  height: 400px;
+  width: 100vw;
+  background-image: url(https://media-exp1.licdn.com/dms/image/C561BAQFOGM8S6gp06w/company-background_10000/0/1638096506282?e=2159024400&v=beta&t=IAyIF6emIIJ1CzM85Gi_RWwyYubPKYQ27NoaQNcHg3g);
+  /* background-image: url(https://media-exp1.licdn.com/dms/image/C561BAQFOGM8S6gp06w/company-background_10000/0/1638096506282?e=2159024400&v=beta&t=IAyIF6emIIJ1CzM85Gi_RWwyYubPKYQ27NoaQNcHg3g); */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 82%;
+}
+.bookingContainer {
+  display: flex;
+  width: 78vw;
+  position: relative;
+  height: 196px;
+  top: 280px;
+  border-radius: 12px;
+  background-color: #ffffffec;
+  box-shadow: 5px 6px 12px #3c3a3a;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: space-around;
+  border: 2px solid darkgray;
+}
+.main {
+  display: flex;
+  height: 650px;
+  width: 100vw;
+  background-color: rgb(169, 174, 179);
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.destinationImagesContainer {
+  display: flex;
+  width: 93%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  height: 380px;
+  width: 100vw;
+  background-color: rgb(11, 53, 82);
+}

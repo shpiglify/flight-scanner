@@ -1,0 +1,20 @@
+[
+  {
+    "city": "paris",
+    "airport": "TLV-FRA",
+    "image": "images/paris.jpg",
+    "price": "$340"
+  },
+  {
+    "city": "berlin",
+    "airport": "TLV-FRA",
+    "image": "images/berlin.jpg",
+    "price": "$340"
+  },
+  {
+    "city": "rome",
+    "airport": "TLV-FRA",
+    "image": "images/rome.jpg",
+    "price": "$340"
+  }
+]

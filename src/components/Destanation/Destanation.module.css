@@ -1,0 +1,41 @@
+.destanation {
+  position: relative;
+  display: flex;
+  width: 27%;
+  height: 35%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.destanation img {
+  position: absolute;
+  width: 71%;
+  height: 125%;
+  border-bottom: 114px solid white;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.destanationDetails {
+  position: relative;
+  display: flex;
+  top: 84px;
+  z-index: 1;
+  width: 71%;
+  height: 40%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.destanationLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+}
+.destanationRight {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -1,0 +1,32 @@
+.FlightsResultHeader {
+  position: relative;
+  display: flex;
+  height: 199px;
+  width: 100vw;
+}
+.FlightDetailsComponent {
+  position: absolute;
+}
+.FlightsResultContainer {
+  display: flex;
+  height: 1200px;
+  width: 100vw;
+  background-color: #dadada;
+  justify-content: center;
+}
+
+.resultsForRoudTrip,
+.resultsForOneWay {
+  display: flex;
+  width: 62%;
+  height: 59%;
+  flex-direction: column;
+  margin-top: 3rem;
+  overflow-y: scroll;
+}
+
+.footer {
+  height: 380px;
+  width: 100vw;
+  background-color: rgb(11, 53, 82);
+}

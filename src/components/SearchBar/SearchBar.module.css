@@ -1,0 +1,98 @@
+.bookingContainer {
+  display: flex;
+  width: 78vw;
+  position: relative;
+  height: 196px;
+  top: 280px;
+  left: 11%;
+  border-radius: 12px;
+  background-color: #ffffffec;
+  box-shadow: 5px 6px 12px #3c3a3a;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: space-around;
+  border: 2px solid darkgray;
+}
+
+.flightForm {
+  display: flex;
+  width: 100%;
+  height: 59%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.formInputs input,
+.formInputs input[type="number"] {
+  height: 34px;
+  width: 104%;
+  color: #055af5;
+  font-size: 13px;
+  border: 3px solid #838383;
+}
+.formInputsSearch,
+.formInputsSearchDisable {
+  position: absolute;
+  width: 18%;
+  top: 75%;
+  left: 82.5%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.buttonActive {
+  
+  text-decoration: none;
+  text-align: center;
+  width: 90%;
+  cursor: pointer;
+  background-color: #4c98e0;
+  height: 34px;
+  color: #15233c;
+  border-radius: 9px;
+  border-color: #dee2e9 #f9eded;
+  font-size: 142%;
+}
+
+.buttonDisable {
+  text-decoration: none;
+  text-align: center;
+  width: 90%;
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: #6a6b6b;
+  height: 34px;
+  color: #464646;
+  border-radius: 9px;
+  border-color: #dee2e9 #f9eded;
+  font-size: 142%;
+}
+.formContainer {
+  background-color: aliceblue;
+}
+.suggestionorigin,
+.suggestiondestination {
+  position: relative;
+  width: 106%;
+  cursor: pointer;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  height: 41%;
+  overflow: auto;
+  border: antiquewhite;
+}
+
+.suggestionorigin,
+.suggestiondestination:hover {
+  background-color: #ffffff;
+}
