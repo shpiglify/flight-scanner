@@ -1,6 +1,6 @@
 const rawFlights = require("./rawFlights.json");
 const { IATACodeToCityName, getRandomAircraft } = require("./utils");
-const { generateRandomDatesPer24hours } = require("./dateHelpers");
+const { generateRandomDatesPer24hours,getRandomInt } = require("./dateHelpers");
 const {
   ElAlairlineLogo,
   ElAlName,
@@ -26,7 +26,6 @@ const createFlight = (rawFlight, departureTimestamp) => {
   const arrival = departureTimestamp + flightDuration;
 
   const flight = {
-    // todo add price
     // todo add date
     flightNumber,
     departure: departureTimestamp,
@@ -40,6 +39,7 @@ const createFlight = (rawFlight, departureTimestamp) => {
     airlineLogo: ElAlairlineLogo,
     stops: NonStop,
     aircraft: getRandomAircraft(),
+    price: getRandomInt(100,700)
   };
 
   return flight;
