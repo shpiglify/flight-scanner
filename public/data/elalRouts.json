@@ -192,18 +192,6 @@
     "objectID": "1587"
   },
   {
-    "name": "Tegel",
-    "city": "Berlin",
-    "country": "Germany",
-    "iata_code": "TXL",
-    "_geoloc": {
-      "lat": 52.559686,
-      "lng": 13.287711
-    },
-    "links_count": 418,
-    "objectID": "351"
-  },
-  {
     "name": "Fiumicino",
     "city": "Rome",
     "country": "Italy",
