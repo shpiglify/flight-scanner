@@ -73,5 +73,13 @@ const createRouteFlightsRoundTripForNextWeek = (rawFlight) => {
   return roundTripFlights;
 };
 
-// console.log(createRouteFlightsTwoWaysForNextWeek(rawFlights[0]));
-console.log(createRouteFlightsRoundTripForNextWeek(rawFlights[0]))
+const createAllFlights = (rawFlights) => {
+  let flights = []
+  rawFlights.forEach(rawFlight => {
+    const flightsForCurrentRawFlight = createRouteFlightsRoundTripForNextWeek(rawFlight)
+    flights = [...flights,...flightsForCurrentRawFlight]
+  })
+  return flights
+}
+
+module.exports = {createAllFlights}
