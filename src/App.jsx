@@ -7,6 +7,7 @@ import Login from "./components/login/login";
 import Register from "./components/register/register";
 import Booking from "./Screens/booking/booking";
 import ProviderWrapper from "./components/ProviderWrapper/ProviderWrapper";
+import Context from "./components/context";
 
 import styles from "./App.module.css";
 
@@ -19,6 +20,7 @@ const App = () => {
   const [userSelectionForOneWay, setUserSelectionForOneWay] = useState([]);
 
   return (
+    <Context.Provider value={{name:'wase'}}>
     <ProviderWrapper>
       <BrowserRouter>
         <div className={styles.app}>
@@ -62,6 +64,7 @@ const App = () => {
         </div>
       </BrowserRouter>
     </ProviderWrapper>
+    </Context.Provider>
   );
 };
 export default App;

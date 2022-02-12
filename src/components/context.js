@@ -1,5 +1,5 @@
 import React from 'react';
 
-const ConverterContext = React.createContext({});
+const Context = React.createContext({});
 
-export default ConverterContext;
+export default Context;
