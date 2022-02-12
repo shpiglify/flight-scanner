@@ -19,7 +19,6 @@ const getRandomTimestamps = (startDate, endDate, amount) => {
 const generateRandomDatesPer24hours = (startDate, endDate, frequency) => {
   let dates = [];
   let dayStart = startDate;
-  console.log("generateRandomDates24h", startDate, endDate, frequency);
   while (dayStart < endDate) {
     let currentDayEnd = dayStart + MILLISECONDS_IN_24_HOURS;
     const datesIn24H = getRandomTimestamps(dayStart, currentDayEnd, frequency);

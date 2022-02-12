@@ -1,5 +1,5 @@
 const rawFlights = require("./rawFlights.json");
-const { IATACodeToCityName, getRandomAircraft } = require("./helpers");
+const { IATACodeToCityName, getRandomAircraft } = require("./utils");
 const { generateRandomDatesPer24hours } = require("./dateHelpers");
 const {
   ElAlairlineLogo,
@@ -10,27 +10,26 @@ const {
 const { v4: uuid } = require("uuid");
 
 const getOppositeDirection = (rawFlight) => {
-  const { flightNumber, originCode, destinationCode, flightDuration } =
-    rawFlight;
+  const { flightNumber, originCode, destinationCode } = rawFlight;
   const oppositeFlight = {
     ...rawFlight,
     flightNumber: "E" + flightNumber,
     originCode: destinationCode,
     destinationCode: originCode,
-    flightDuration,
   };
   return oppositeFlight;
 };
 
-const generateFlight = (rawFlight, departure) => {
-  const { flightNumber, originCode, destinationCode, flightDuration } =
-    rawFlight;
+const createFlight = (rawFlight, departureTimestamp) => {
+  const { flightNumber, originCode, destinationCode, flightDuration } = rawFlight;
 
-  const arrival = departure + flightDuration;
+  const arrival = departureTimestamp + flightDuration;
 
   const flight = {
+    // todo add price
+    // todo add date
     flightNumber,
-    departure,
+    departure: departureTimestamp,
     arrival,
     originCode,
     origin: IATACodeToCityName(originCode),
@@ -46,35 +45,31 @@ const generateFlight = (rawFlight, departure) => {
   return flight;
 };
 
-const generateFlightNumberFlights = (
-  rawFlight,
-  startTimestamp,
-  endTimestamp
-) => {
+const createOneWayRouteFlights = ( rawFlight, startDateTimestamp, endDateTimestamp ) => {
   const departuresTimestamps = generateRandomDatesPer24hours(
-    startTimestamp,
-    endTimestamp,
+    startDateTimestamp,
+    endDateTimestamp,
     rawFlight.flightsPer24h
   );
-  console.log("departuresTimestamps", departuresTimestamps);
   const flights = departuresTimestamps.map((departureTimestamp) =>
-    generateFlight(rawFlight, departureTimestamp)
+    createFlight(rawFlight, departureTimestamp)
   );
   return flights;
 };
 
-const generateFlightNumberFlightsTwoWaysForNextWeek = (rawFlight) => {
+const createRouteFlightsRoundTripForNextWeek = (rawFlight) => {
   const today = Date.now();
   const nextWeek = Date.now() + MILLISECONDS_IN_1_WEEK;
-  const oneWayFlights = generateFlightNumberFlights(rawFlight, today, nextWeek);
+  const oneWayFlights = createOneWayRouteFlights(rawFlight, today, nextWeek);
   const oppositeDirectionRawFlight = getOppositeDirection(rawFlight);
-  const oppositeWayFlights = generateFlightNumberFlights(
+  const oppositeWayFlights = createOneWayRouteFlights(
     oppositeDirectionRawFlight,
     today,
     nextWeek
   );
-  const twoWayFlights = [...oneWayFlights, ...oppositeWayFlights];
-  return twoWayFlights;
+  const roundTripFlights = [...oneWayFlights, ...oppositeWayFlights];
+  return roundTripFlights;
 };
 
-console.log(generateFlightNumberFlightsTwoWaysForNextWeek(rawFlights[0]));
+// console.log(createRouteFlightsTwoWaysForNextWeek(rawFlights[0]));
+console.log(createRouteFlightsRoundTripForNextWeek(rawFlights[0]))
