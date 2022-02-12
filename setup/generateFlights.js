@@ -8,6 +8,7 @@ const {
   MILLISECONDS_IN_1_WEEK,
 } = require("./consts");
 const { v4: uuid } = require("uuid");
+const moment = require("moment");
 
 const getOppositeDirection = (rawFlight) => {
   const { flightNumber, originCode, destinationCode } = rawFlight;
@@ -26,7 +27,8 @@ const createFlight = (rawFlight, departureTimestamp) => {
   const arrival = departureTimestamp + flightDuration;
 
   const flight = {
-    // todo add date
+    id: uuid(),
+    date: moment(departureTimestamp).format('DD/MM/YYYY'),
     flightNumber,
     departure: departureTimestamp,
     arrival,
