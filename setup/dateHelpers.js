@@ -19,18 +19,14 @@ const getRandomTimestamps = (startDate, endDate, amount) => {
 const generateRandomDatesPer24hours = (startDate, endDate, frequency) => {
   let dates = [];
   let dayStart = startDate;
-  console.log('generateRandomDates24h',startDate,endDate,frequency)
+  console.log("generateRandomDates24h", startDate, endDate, frequency);
   while (dayStart < endDate) {
-    let currentDayEnd = dayStart + MILLISECONDS_IN_24_HOURS
-    const datesIn24H = getRandomTimestamps(
-      dayStart,
-      currentDayEnd,
-      frequency
-    );
-     dates = dates.concat(datesIn24H);
-    dayStart = currentDayEnd
+    let currentDayEnd = dayStart + MILLISECONDS_IN_24_HOURS;
+    const datesIn24H = getRandomTimestamps(dayStart, currentDayEnd, frequency);
+    dates = dates.concat(datesIn24H);
+    dayStart = currentDayEnd;
   }
-  return dates
+  return dates;
 };
 
 // const today = Date.now()
@@ -38,4 +34,4 @@ const generateRandomDatesPer24hours = (startDate, endDate, frequency) => {
 // console.log(getRandomTimestamps(today,tommorow,2))
 // console.log(generateRandomDatesPer24hours(today,tommorow,6).map(date => new Date(date)))
 
-module.exports = {generateRandomDatesPer24hours}
+module.exports = { generateRandomDatesPer24hours };
