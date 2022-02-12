@@ -1,7 +1,16 @@
 const IATACodeToCityNameMap = require("./IATACodeToCityNameMap.json");
+const aircrafts = require("./aircrafts.json");
+
+const _getRandomElement = (array) => {
+  return array[Math.floor(Math.random() * items.length)];
+};
 
 const IATACodeToCityName = (IATACode) => {
   return IATACodeToCityNameMap[IATACode];
 };
 
-module.exports = { IATACodeToCityName };
+const getRandomAircraft = () => {
+  return _getRandomElement(aircrafts);
+};
+
+module.exports = { IATACodeToCityName, getRandomAircraft };
