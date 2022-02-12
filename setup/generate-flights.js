@@ -4,13 +4,12 @@ const { ElAlairlineLogo, ElAlName, NonStop } = require("./consts");
 const { v4: uuid } = require("uuid");
 
 const generateFlight = (rawFlight, departure) => {
-  const { flightNumber, originCode, destinationCode, FlightDuration } =
+  const { flightNumber, originCode, destinationCode, flightDuration } =
     rawFlight;
 
-  const arrival = departure + FlightDuration;
+  const arrival = departure + flightDuration;
 
   const flight = {
-    id: uuid(),
     flightNumber,
     departure,
     arrival,
@@ -18,7 +17,7 @@ const generateFlight = (rawFlight, departure) => {
     origin: IATACodeToCityName(originCode),
     destinationCode,
     destination: IATACodeToCityName(destinationCode),
-    FlightDuration,
+    flightDuration,
     airline: ElAlName,
     airlineLogo: ElAlairlineLogo,
     stops: NonStop,
@@ -27,5 +26,9 @@ const generateFlight = (rawFlight, departure) => {
 
   return flight;
 };
+
+const generateFlightNumberFlights = (flightNumber,dateRange,flightsPerDay) => {
+    
+}
 
 console.log(generateFlight(rawFlights[0], Date.now()));
