@@ -48,8 +48,15 @@ const generateFlightNumberFlights = (rawFlight,startTimestamp,endTimestamp) => {
     return flights
 }
 
-const generateFlightNumberFlightsForNextWeek = (rawFlight) => {
+const generateFlightNumberFlightsTwoWaysForNextWeek = (rawFlight) => {
     const today = Date.now()
     const nextWeek = Date.now() + MILLISECONDS_IN_1_WEEK 
-    return generateFlightNumberFlights(rawFlight,today,nextWeek)
+    const oneWayFlights = generateFlightNumberFlights(rawFlight,today,nextWeek)
+    const oppositeDirectionRawFlight = getOppositeDirection(rawFlight)
+    const oppositeWayFlights = generateFlightNumberFlights(oppositeDirectionRawFlight,today,nextWeek)
+    const twoWayFlights = [...oneWayFlights,...oppositeWayFlights]
+    return twoWayFlights
 }
+
+
+console.log(generateFlightNumberFlightsTwoWaysForNextWeek(rawFlights[0]))
