@@ -1,9 +1,9 @@
 [
-    {
-        "flightNumber": "LY65",
-        "originCode": "TLV",
-        "destinationCode": "PVG",
-        "FlightDuration": 36120000,
-        "comment_FlightDuration_todelete": "10h 02m"
-    }
+  {
+    "flightNumber": "LY65",
+    "originCode": "TLV",
+    "destinationCode": "PVG",
+    "FlightDuration": 36120000,
+    "comment_FlightDuration_todelete": "10h 02m"
+  }
 ]

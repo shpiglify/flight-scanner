@@ -1,7 +1,15 @@
-const rawFlights =  require('./rawFlights.json');
+const rawFlights = require("./rawFlights.json");
+const { originCodeToOrigin } = require("./helpers");
 
 const generateFlight = (rawFlight) => {
-    return rawFlight
-}
+  const { flightNumber, originCode, destinationCode, FlightDuration } =
+    rawFlight;
 
-console.log(generateFlight(rawFlights[0]))
+  const flight = {
+    ...rawFlight,
+    origin: originCodeToOrigin(),
+  };
+  return rawFlight;
+};
+
+console.log(generateFlight(rawFlights[0]));

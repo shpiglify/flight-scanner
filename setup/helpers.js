@@ -1,7 +1,7 @@
-const originCodeToOriginMap = require('./originCodesToOrigin.json')
+const originCodeToOriginMap = require("./originCodesToOrigin.json");
 
 const originCodeToOrigin = (originCode) => {
-    return originCodeToOriginMap[originCode]
-}
+  return originCodeToOriginMap[originCode];
+};
 
-module.exports = {originCodeToOrigin}
+module.exports = { originCodeToOrigin };
