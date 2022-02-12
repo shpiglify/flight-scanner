@@ -442,5 +442,17 @@
     },
     "links_count": 903,
     "objectID": "580"
+  },
+  {
+    "name": "Brandenburg",
+    "city": "Berlin",
+    "country": "Germany",
+    "iata_code": "BER",
+    "_geoloc": {
+      "lat": 52.308613,
+      "lng": 4.763889
+    },
+    "links_count": 903,
+    "objectID": "580"
   }
 ]
