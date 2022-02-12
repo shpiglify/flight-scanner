@@ -17,22 +17,17 @@ const FlightsResult = ({
   return (
     <>
       <header className={styles.FlightsResultHeader}>
-        {/* <FlightDetails/> */}
         <SearchBar mainClass={styles.flightResultSearchBar} />
       </header>
       <main className={styles.FlightsResultContainer}>
         {radio == "roundTrip" ? (
-          // <div className={styles.resultsForRoudTrip}>
-            <RoundTripTickets
-              setUserSelectionForRoundTrip={setUserSelectionForRoundTrip}
-            />
-          // </div>
+          <RoundTripTickets
+            setUserSelectionForRoundTrip={setUserSelectionForRoundTrip}
+          />
         ) : (
-          // <div className={styles.resultsForOneWay}>
-            <OneWayTickets
-              setUserSelectionForOneWay={setUserSelectionForOneWay}
-            />
-          // </div>
+          <OneWayTickets
+            setUserSelectionForOneWay={setUserSelectionForOneWay}
+          />
         )}
       </main>
       <footer className={styles.footer}></footer>

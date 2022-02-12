@@ -109,7 +109,7 @@ const RoundTripTickets = ({ setUserSelectionForRoundTrip }) => {
               <article className={styles.ticketFlightDetailsRoundTrip}>
                 <div className={styles.airlineRoundTrip}>
                   <img src="" alt="ElAl logo" />
-                  <h4>ElAL</h4>
+                  <h5>El-Al</h5>
                 </div>
                 <div className={styles.departureRoundTrip}>
                   <h5>06:15</h5>
