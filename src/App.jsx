@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./Screens/Home/Home";
+import About from "./Screens/About/About";
 import FlightsResult from "./Screens/Flights-Results/FlightsResult";
 import Login from "./components/login/login";
 import Register from "./components/register/register";
@@ -13,21 +14,21 @@ import styles from "./App.module.css";
 
 const App = () => {
   const [auth, setAuth] = useState(null);
-  // const [radio, setRadio] = useState("roundTrip");
   const [userSelectionForRoundTrip, setUserSelectionForRoundTrip] = useState(
     []
   );
   const [userSelectionForOneWay, setUserSelectionForOneWay] = useState([]);
+  const name = 'wase'
 
   return (
-    <Context.Provider value={{name:'wase'}}>
+    <Context.Provider value={{name,setName}}>
     <ProviderWrapper>
       <BrowserRouter>
         <div className={styles.app}>
           <Navbar />
           <Switch>
             <Route exact path="/" component={() => <Home />} />
-            <Route exact path="/about" />
+            <Route exact path="/about" component={() => <About />} />
             <Route
               exact
               path="/booking"
