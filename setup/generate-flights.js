@@ -1,4 +1,7 @@
+const rawFlights =  require('./rawFlights.json');
 
-const generateFlights = () => {
-    
+const generateFlight = (rawFlight) => {
+    return rawFlight
 }
+
+console.log(generateFlight(rawFlights[0]))

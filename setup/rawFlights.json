@@ -4,6 +4,6 @@
         "originCode": "TLV",
         "destinationCode": "PVG",
         "FlightDuration": 36120000,
-        "_FlightDuration_todelete": "10h 02m"
+        "comment_FlightDuration_todelete": "10h 02m"
     }
 ]

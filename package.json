@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "setup":"node setup/generate-flights.js"
   },
   "dependencies": {
     "axios": "^0.25.0",
