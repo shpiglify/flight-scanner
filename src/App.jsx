@@ -9,7 +9,6 @@ import Register from "./components/register/register";
 import Booking from "./Screens/booking/booking";
 import ProviderWrapper from "./components/ProviderWrapper/ProviderWrapper";
 import Context from "./components/context";
-import { searchSameDayFlights } from "./services/flightsSearch";
 
 import styles from "./App.module.css";
 

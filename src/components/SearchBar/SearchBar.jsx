@@ -8,7 +8,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./SearchBar.module.css";
 import Context from '../context'
-import { searchSameDayFlights } from "../../services/flightsSearch";
+import { searchSameDayFlights,searchRoundTripFlights } from "../../services/flightsSearch";
 
 import elalRoutes from "../../../public/data/elalRouts.json";
 // const flightUrl = "/data/oneWay.json";
@@ -26,15 +26,8 @@ const SearchBar = ({ mainClass }) => {
 
   const {setFlightResults} = useContext(Context)
 
-  const [flightsSchedule, setFlightSchedule] = useState([]);
   const [suggestionsOrigin, setSuggestionsOrigin] = useState([]);
   const [suggestionsDestination, setSuggestionsDestination] = useState([]);
-
-  console.log(suggestionsOrigin)
-
-  useEffect(() => {
-    getData(flightUrl, setFlightSchedule);
-  }, []);
 
   const handleChange = (date) => {
     setSearchInputs({ departureDate: date });
@@ -55,11 +48,16 @@ const SearchBar = ({ mainClass }) => {
       alert("You can't choose the same city");
       return;
     }
-    console.log(searchInputs)
-    const day = moment(searchInputs.departureDate).format('DD/MM/YYYY')
-    const flights = searchSameDayFlights(searchInputs.origin,searchInputs.destination,day)
-    setFlightResults(flights)
+    const departureDay = moment(searchInputs.departureDate).format('DD/MM/YYYY')
+    const returnDay = moment(searchInputs.returnDate).format('DD/MM/YYYY')
 
+    let flights = []
+    if(radio === "roundTrip"){
+      flights = searchRoundTripFlights(searchInputs.origin,searchInputs.destination,departureDay,returnDay)
+    }else{
+     flights = searchSameDayFlights(searchInputs.origin,searchInputs.destination,departureDay)
+    }
+    setFlightResults(flights)
   };
 
 const isValid =

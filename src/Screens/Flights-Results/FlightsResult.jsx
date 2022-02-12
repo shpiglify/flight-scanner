@@ -4,14 +4,15 @@ import Flight from "../../components/Flight/Flight";
 
 import styles from "./FlightsResult.module.css";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { AppContext } from "../../components/ProviderWrapper/ProviderWrapper";
 import RoundTripTickets from '../../components/RoundTripTickets/RoundTripTickets'
 
 const FlightsResult = ({
   setUserSelectionForRoundTrip
 }) => {
   const { flightResults } = useContext(Context);
-  const {radio} = useContext(AppContext)
+
+  const isRoundTrip = Array.isArray(flightResults[0])
+
 
   return (
     <>
@@ -20,9 +21,9 @@ const FlightsResult = ({
       </header>
       <main className={styles.FlightsResultContainer}>
 
-        
+      
 
-        {radio == "roundTrip" ? (
+        {isRoundTrip ? (
           <RoundTripTickets
             setUserSelectionForRoundTrip={setUserSelectionForRoundTrip}
           />
