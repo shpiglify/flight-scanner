@@ -1,4 +1,4 @@
-.resultsForOneWay {
+/* .resultsForOneWay {
   display: flex;
   width: 62%;
   height: 59%;
@@ -26,8 +26,8 @@
   flex-direction: column;
   justify-content: space-around;
   align-content: space-between;
-}
-
+} */
+/* 
 .OneWayflightDetails {
   display: flex;
   background-color: #f9f9f9;
@@ -57,8 +57,7 @@
   margin-top: 0.4rem;
   border-left: 1px dotted rgb(129, 129, 129);
   background-color: #f9f9f9;
-}
-
+} */
 
 /* .OneWayticket
 .OneWayflightDetails
@@ -75,3 +74,274 @@
 .resultsForOneWay
 .destination
 .results */
+
+/* oneWayTicket */
+
+
+
+.container{
+  display: flex;
+  flex-direction: column;
+}
+
+.resultsForOneWay {
+  display: flex;
+  width: 61vw;
+  height: 59%;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+.destination {
+  height: 24%;
+  margin-bottom: 2rem;
+}
+.results {
+  overflow-y: scroll;
+}
+.OneWayticket {
+  position: relative;
+  border-radius: 12px;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-content: space-between;
+  overflow: hidden;
+}
+.ticketFlightDetails {
+  display: flex;
+  padding: 1px;
+  width: 75%;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  background-color: #cacaca;
+  border: 2px solid #141542;
+  border-right: none;
+  height: auto;
+  flex-direction: row;
+  align-items: center;
+}
+.airline {
+  /* background-color: brown; */
+  width: 25%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.departure {
+  display: flex;
+  /* background-color: #a8c6c7; */
+  width: 25%;
+  height: 75%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.FlightDuration {
+  display: flex;
+  /* background-color: cadetblue; */
+  width: 25%;
+  height: 75%;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.arrival {
+  display: flex;
+  /* background-color: #3e73a1; */
+  width: 25%;
+  height: 75%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.lineSparate {
+  display: flex;
+  position: absolute;
+  right: 24%;
+  bottom: -8.5%;
+  flex-direction: column;
+  width: 2%;
+  height: 114%;
+  align-items: center;
+}
+.topDot,
+.bottomDot {
+  height: 9%;
+  width: 100%;
+  background-color: #141542;
+  border-radius: 50%;
+}
+.line {
+  height: 80%;
+  border-left: 4px dotted #b4b4b4;
+}
+
+.ticketPrice {
+  display: flex;
+  background-color: #cacaca;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: 2px solid #141542;
+  border-left: none;
+  width: 25%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.flightPrice {
+  background-color: #cddc39;
+  display: flex;
+  width: 50%;
+  height: 29.5%;
+  align-items: center;
+  justify-content: center;
+}
+.selectBtn {
+  display: flex;
+  background-color: red;
+  width: 50%;
+  height: 37.5%;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* roundTripTicket */
+.containerRoundTrip{
+  display: flex;
+  flex-direction: column;
+}
+
+.resultsForRoundTrip {
+  display: flex;
+  width: 61vw;
+  height: 59%;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+.destinationRoundTrip {
+  height: 24%;
+  margin-bottom: 2rem;
+}
+.resultsRoundTrip {
+  overflow-y: scroll;
+}
+.ticketRoundTrip {
+  position: relative;
+  border-radius: 12px;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-content: space-between;
+  overflow: hidden;
+}
+.roundTripTicketsContainer{
+  display: flex;
+  flex-direction: column;
+}
+.ticketFlightDetailsRoundTrip {
+  display: flex;
+  padding: 1px;
+  width: 75%;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  background-color: #cacaca;
+  border: 2px solid #141542;
+  border-right: none;
+  height: auto;
+  flex-direction: row;
+  align-items: center;
+}
+.airlineRoundTrip {
+  /* background-color: brown; */
+  width: 25%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.departureRoundTrip {
+  display: flex;
+  /* background-color: #a8c6c7; */
+  width: 25%;
+  height: 75%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.FlightDurationRoundTrip {
+  display: flex;
+  /* background-color: cadetblue; */
+  width: 25%;
+  height: 75%;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.arrivalRoundTrip {
+  display: flex;
+  /* background-color: #3e73a1; */
+  width: 25%;
+  height: 75%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.lineSparateRoundTrip {
+  display: flex;
+  position: absolute;
+  right: 24%;
+  bottom: -8.5%;
+  flex-direction: column;
+  width: 2%;
+  height: 114%;
+  align-items: center;
+}
+.topDoRoundTript,
+.bottomDotRoundTrip {
+  height: 9%;
+  width: 100%;
+  background-color: #141542;
+  border-radius: 50%;
+}
+.lineRoundTrip {
+  height: 80%;
+  border-left: 4px dotted #b4b4b4;
+}
+
+.ticketPriceRoundTrip {
+  display: flex;
+  background-color: #cacaca;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: 2px solid #141542;
+  border-left: none;
+  width: 25%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.flightPriceRoundTrip {
+  background-color: #cddc39;
+  display: flex;
+  width: 50%;
+  height: 29.5%;
+  align-items: center;
+  justify-content: center;
+}
+.selectBtnRoundTrip {
+  display: flex;
+  background-color: red;
+  width: 50%;
+  height: 37.5%;
+  align-items: center;
+  justify-content: center;
+}
