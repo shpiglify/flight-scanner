@@ -4,8 +4,60 @@ import { AppContext } from "../ProviderWrapper/ProviderWrapper";
 
 import styles from "./OneWayTickets.module.css";
 
+const flights = [
+  {
+    date: "13/02/2022",
+    id: 2,
+    flightNumber: "LY65",
+    departure: "18:00",
+    arrival: "04:30",
+    originCode: "TLV",
+    origin: "Tel Aviv",
+    destinationCode: "PVG",
+    destination: "Shanghai",
+    airlineLogo: "https://dealandgo.co.il/img/airlines/ELY.png",
+    airline: "Elal",
+    stops: "non-Stop",
+    FlightDuration: "10h 02m",
+    aircraft: "Boeing 787-9",
+  },
+  {
+    date: "13/02/2022",
+    id: 3,
+    flightNumber: "LY371",
+    departure: "07:00",
+    arrival: "10:55",
+    originCode: "TLV",
+    origin: "Tel Aviv",
+    destinationCode: "LIS",
+    destination: "Lisbon",
+    airlineLogo: "https://dealandgo.co.il/img/airlines/ELY.png",
+    airline: "Elal",
+    stops: "non-Stop",
+    FlightDuration: "05h 49m",
+    aircraft: "Boeing 737-800",
+  },
+  {
+    date: "13/02/2022",
+    id: 4,
+    flightNumber: "LY371",
+    departure: "14:00",
+    arrival: "18:55",
+    originCode: "TLV",
+    origin: "Tel Aviv",
+    destinationCode: "LIS",
+    destination: "Lisbon",
+    airlineLogo: "https://dealandgo.co.il/img/airlines/ELY.png",
+    airline: "Elal",
+    stops: "non-Stop",
+    FlightDuration: "05h 49m",
+    aircraft: "Boeing 737-800",
+  },
+];
+
 function OneWayTickets({ setUserSelectionForOneWay }) {
-  const { oneWayTickets } = useContext(AppContext);
+  // const { oneWayTickets } = useContext(AppContext);
+  const oneWayTickets = flights
 
   const passTicketToBooking = (oneWayTicketId) => {
     const oneWayTicketForBooking = [];

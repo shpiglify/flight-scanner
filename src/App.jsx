@@ -7,6 +7,7 @@ import Login from "./components/login/login";
 import Register from "./components/register/register";
 import Booking from "./Screens/booking/booking";
 import ProviderWrapper from "./components/ProviderWrapper/ProviderWrapper";
+import NewFlightsResult from "./Screens/Flights-Results-New/FlightsResult"
 
 import styles from "./App.module.css";
 
@@ -25,7 +26,7 @@ const App = () => {
           <Navbar />
           <Switch>
             <Route exact path="/" component={() => <Home />} />
-            <Route exact path="/about" />
+            <Route exact path="/about" component={() => <NewFlightsResult/>} />
             <Route
               exact
               path="/booking"
