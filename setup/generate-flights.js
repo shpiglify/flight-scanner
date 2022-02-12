@@ -1,13 +1,17 @@
 const rawFlights = require("./rawFlights.json");
 const { IATACodeToCityName, getRandomAircraft } = require("./helpers");
-const { ElAlairlineLogo, ElAlName, NonStop } = require("consts");
+const { ElAlairlineLogo, ElAlName, NonStop } = require("./consts");
 
-const generateFlight = (rawFlight) => {
+const generateFlight = (rawFlight,departure) => {
   const { flightNumber, originCode, destinationCode, FlightDuration } =
     rawFlight;
 
+const arrival = departure + FlightDuration;
+
   const flight = {
     flightNumber,
+    departure,
+    arrival,
     originCode,
     origin: IATACodeToCityName(originCode),
     destinationCode,
@@ -22,4 +26,4 @@ const generateFlight = (rawFlight) => {
   return flight;
 };
 
-console.log(generateFlight(rawFlights[0]));
+console.log(generateFlight(rawFlights[0],Date.now()));
