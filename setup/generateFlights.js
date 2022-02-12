@@ -1,6 +1,6 @@
 const rawFlights = require("./rawFlights.json");
-const { IATACodeToCityName, getRandomAircraft } = require("./utils");
-const { generateRandomDatesPer24hours,getRandomInt } = require("./dateHelpers");
+const { IATACodeToCityName, getRandomAircraft,getRandomInt } = require("./utils");
+const { generateRandomDatesPer24hours } = require("./dateHelpers");
 const {
   ElAlairlineLogo,
   ElAlName,

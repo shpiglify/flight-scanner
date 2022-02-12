@@ -1,6 +1,12 @@
 const aircrafts = require("./aircrafts.json");
 const elalRoutes = require("../public/data/elalRouts.json");
 
+const getRandomInt = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+};
+
 const getRandomElement = (array) => {
   return array[Math.floor(Math.random() * array.length)];
 };
@@ -23,4 +29,4 @@ const getRandomAircraft = () => {
   return getRandomElement(aircrafts);
 };
 
-module.exports = { IATACodeToCityName, getRandomAircraft };
+module.exports = { IATACodeToCityName, getRandomAircraft,getRandomInt };
