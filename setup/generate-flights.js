@@ -27,7 +27,7 @@ const generateFlight = (rawFlight, departure) => {
   return flight;
 };
 
-const generateFlightNumberFlights = (flightNumber,dateRange,flightsPerDay) => {
+const generateFlightNumberFlights = (rawFlight,dateRange) => {
     
 }
 
