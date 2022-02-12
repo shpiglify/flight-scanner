@@ -1,7 +1,21 @@
 const rawFlights = require("./rawFlights.json");
 const { IATACodeToCityName, getRandomAircraft } = require("./helpers");
-const { ElAlairlineLogo, ElAlName, NonStop } = require("./consts");
+const {generateRandomDatesPer24hours} = require('./dateHelpers')
+const { ElAlairlineLogo, ElAlName, NonStop,MILLISECONDS_IN_1_WEEK } = require("./consts");
 const { v4: uuid } = require("uuid");
+
+const getOppositeDirection = (rawFlight) => {
+    const { flightNumber, originCode, destinationCode, flightDuration } =
+    rawFlight;
+    const oppositeFlight = {
+        ...rawFlight,
+        flightNumber: "E" + flightNumber,
+        originCode: destinationCode,
+        destinationCode: originCode,
+        flightDuration
+    }
+    return oppositeFlight
+}
 
 const generateFlight = (rawFlight, departure) => {
   const { flightNumber, originCode, destinationCode, flightDuration } =
@@ -27,8 +41,15 @@ const generateFlight = (rawFlight, departure) => {
   return flight;
 };
 
-const generateFlightNumberFlights = (rawFlight,dateRange) => {
-    
+const generateFlightNumberFlights = (rawFlight,startTimestamp,endTimestamp) => {
+    const departuresTimestamps = generateRandomDatesPer24hours(startTimestamp,endTimestamp,rawFlight.flightsPer24h)
+    console.log('departuresTimestamps',departuresTimestamps)
+    const flights = departuresTimestamps.map(departureTimestamp => generateFlight(rawFlight,departureTimestamp))
+    return flights
 }
 
-console.log(generateFlight(rawFlights[0], Date.now()));
+const generateFlightNumberFlightsForNextWeek = (rawFlight) => {
+    const today = Date.now()
+    const nextWeek = Date.now() + MILLISECONDS_IN_1_WEEK 
+    return generateFlightNumberFlights(rawFlight,today,nextWeek)
+}

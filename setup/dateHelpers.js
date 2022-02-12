@@ -1,6 +1,6 @@
 const { MILLISECONDS_IN_24_HOURS } = require("./consts");
 
-const getRandomInt = (min, max) => {
+const _getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
@@ -10,7 +10,7 @@ const getRandomTimestamps = (startDate, endDate, amount) => {
   //all date values should be timestamps
   const dates = [];
   for (let i = 0; i < amount; i++) {
-    const randomDate = getRandomInt(startDate, endDate);
+    const randomDate = _getRandomInt(startDate, endDate);
     dates.push(randomDate);
   }
   return dates;
@@ -19,6 +19,7 @@ const getRandomTimestamps = (startDate, endDate, amount) => {
 const generateRandomDatesPer24hours = (startDate, endDate, frequency) => {
   let dates = [];
   let dayStart = startDate;
+  console.log('generateRandomDates24h',startDate,endDate,frequency)
   while (dayStart < endDate) {
     let currentDayEnd = dayStart + MILLISECONDS_IN_24_HOURS
     const datesIn24H = getRandomTimestamps(
