@@ -1,7 +1,7 @@
-const originCodeToOriginMap = require("./originCodesToOrigin.json");
+const IATACodeToCityNameMap = require("./IATACodeToCityNameMap.json");
 
-const originCodeToOrigin = (originCode) => {
-  return originCodeToOriginMap[originCode];
+const IATACodeToCityName = (IATACode) => {
+  return IATACodeToCityNameMap[IATACode];
 };
 
-module.exports = { originCodeToOrigin };
+module.exports = { IATACodeToCityName };
