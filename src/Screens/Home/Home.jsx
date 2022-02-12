@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <header className={styles.header}>
-        <SearchBar />
+        <SearchBar mainClass={styles.bookingContainer}/>
       </header>
       <main className={styles.main}>
         <div className={styles.destinationImagesContainer}>

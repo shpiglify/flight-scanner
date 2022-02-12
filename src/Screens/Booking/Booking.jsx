@@ -19,7 +19,7 @@ const Booking = ({ userSelectionForRoundTrip, userSelectionForOneWay }) => {
             userSelectionForRoundTrip={userSelectionForRoundTrip}
             userSelectionForOneWay={userSelectionForOneWay}
           />
-          {/* <BookingPayMent /> */}
+          <BookingPayMent />
           <div className={styles.travelerDetails}>
             <div className={styles.travelerDetailsHeading}>
               <h3>Traveler Details</h3>

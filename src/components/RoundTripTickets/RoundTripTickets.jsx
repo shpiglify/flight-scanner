@@ -30,6 +30,8 @@ const RoundTripTickets = ({ setUserSelectionForRoundTrip }) => {
                   <div className={styles.roundTicketTripInnerContainer}>
                     <div className="flight num">
                       <h4>{ticket.flightNumber}</h4>
+                      <h5>Departure</h5>
+                        <h5>{ticket.date}</h5>
                     </div>
                     <div className="depArvTime">
                       <h4>
@@ -37,8 +39,8 @@ const RoundTripTickets = ({ setUserSelectionForRoundTrip }) => {
                       </h4>
                     </div>
                     <div className="fromTo">
-                      <h4>{ticket.origin}</h4>
                       <h4>{ticket.destination}</h4>
+                      <h4>{ticket.origin}</h4>
                     </div>
                     <div className="total">
                       <h4>{ticket.terminal}</h4>
@@ -53,6 +55,8 @@ const RoundTripTickets = ({ setUserSelectionForRoundTrip }) => {
                     <div className={styles.roundTicketTripInnerContainer}>
                       <div className="flightnum">
                         <h4>{secondTicket[i].flightNumber}</h4>
+                        <h5>Departure</h5>
+                        <h5>{secondTicket[i].date}</h5>
                       </div>
                       <div className="depArvTime">
                         <h4>
@@ -61,12 +65,11 @@ const RoundTripTickets = ({ setUserSelectionForRoundTrip }) => {
                         </h4>
                       </div>
                       <div className="fromTo">
-                        <h4>{secondTicket[i].origin}</h4>
                         <h4>{secondTicket[i].destination}</h4>
+                        <h4>{secondTicket[i].origin}</h4>
                       </div>
                       <div className="total">
                         <h4>{secondTicket[i].terminal}</h4>
-                        <h4>06h 00m</h4>
                       </div>
                     </div>
                   </section>
@@ -96,7 +99,12 @@ const RoundTripTickets = ({ setUserSelectionForRoundTrip }) => {
       })
     : null;
 
-  return <>{roundTripElements}</>;
+  return (
+    <div className={styles.resultsForRoudTrip}>
+      <div className={styles.destination}></div>
+      <div className={styles.results}>{roundTripElements}</div>
+    </div>
+  );
 };
 
 export default RoundTripTickets;

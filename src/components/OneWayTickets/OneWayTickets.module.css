@@ -1,4 +1,21 @@
-.OneWayticket{
+.resultsForOneWay {
+  display: flex;
+  width: 62%;
+  height: 59%;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+.destination {
+  position: sticky;
+  background-color: #cccccd;
+  height: 9rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+.results {
+  overflow-y: scroll;
+}
+.OneWayticket {
   display: flex;
   flex-wrap: wrap;
   height: 22%;
@@ -41,3 +58,20 @@
   border-left: 1px dotted rgb(129, 129, 129);
   background-color: #f9f9f9;
 }
+
+
+/* .OneWayticket
+.OneWayflightDetails
+.OneWayticketOne
+.flightNum
+.airlineLogo
+.depArvTime
+.fromTo
+.total
+.OneWayflightPrice
+.icon
+.price
+.button
+.resultsForOneWay
+.destination
+.results */

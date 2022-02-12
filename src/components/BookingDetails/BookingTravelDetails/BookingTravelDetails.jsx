@@ -45,7 +45,7 @@ function BookingTravelDetails() {
               className={styles.year}
               type="date"
               min="1900-01-01"
-              max="today"
+              max={new Date().toISOString().split("T")[0]}
               onChange={(e) => {
                 setUserDetails({ ...userDetails, dateOfBirth: e.target.value });
               }}

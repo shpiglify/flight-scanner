@@ -9,9 +9,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from "./SearchBar.module.css";
 
 const airportUrl = "/data/elalRouts.json";
-const flightUrl = "/data/flightsWeekOne.json";
+// const flightUrl = "/data/oneWay.json";
+const flightUrl = "/data/test.json";
 
-const SearchBar = () => {
+const SearchBar = ({ mainClass }) => {
   const {
     setRadio,
     radio,
@@ -34,7 +35,10 @@ const SearchBar = () => {
     getData(flightUrl, setFlightSchedule);
   }, []);
 
-  const handleChange = (date) => setSearchInputs({ departureDate: date });
+  const handleChange = (date) => {
+    // console.log(moment(date).format("YYYY-DD-MM"));
+    setSearchInputs({ departureDate: date });
+  };
 
   const setSuggestionsWrapper = (text, setSuggestions) => {
     const matches =
@@ -52,41 +56,62 @@ const SearchBar = () => {
       return;
     }
 
+    // const systemOneWayTickets = flightsSchedule.filter((flight) => {
+    //   return (
+    //     flight.origin === origin &&
+    //     flight.destination === destination &&
+    //     flight.date === moment(departureDate).format("DD/MM/YYYY")
+    //   );
+    // });
+
     const systemTickets = (a, b, date) =>
       flightsSchedule.filter((flight) => {
         return (
-          flight.origin.toLowerCase() === b.toLowerCase() &&
-          flight.destination.toLowerCase() === a.toLowerCase() &&
-          flight.date === date
+          flight.origin.toLowerCase() === a.toLowerCase() &&
+          flight.destination.toLowerCase() === b.toLowerCase() &&
+          moment(date).format("DD/MM/YYYY") === flight.date
         );
       });
-    setTimeout(() => {
-      const systemOneWayTickets = systemTickets(
+
+    const systemTicketsRoundTrip = (a, b, userDepartureDate, userReturnDate) =>
+      flightsSchedule.filter((flight) => {
+        return (
+          // flight.origin.toLowerCase() === a.toLowerCase() &&
+          // flight.destination.toLowerCase() === b.toLowerCase() &&
+          moment(userDepartureDate).format("DD/MM/YYYY") ===
+            flight.userDepartureDate &&
+          moment(userReturnDate).format("DD/MM/YYYY") ===
+            flight.userReturnDate &&
+          flight.origin.toLowerCase() === b.toLowerCase()
+          // flight.destination.toLowerCase() === a.toLowerCase()
+        );
+      });
+
+    if (radio === "oneWay") {
+      const systemOneWayTickets = systemTicketsOneWay(
         searchInputs.origin,
         searchInputs.destination,
         searchInputs.departureDate
       );
-      // systemOneWayTickets.filter((flight) => {
-      //   flight.date ;
-      // });
-
-      const systemRoundTripTickets = systemTickets(
-        searchInputs.destination,
-        searchInputs.origin,
-        searchInputs.departureDate
-      );
-
       setOneWayTickets(systemOneWayTickets);
+    } else {
+      const systemRoundTripTickets = systemTicketsRoundTrip(
+        searchInputs.origin,
+        searchInputs.destination,
+        searchInputs.departureDate,
+        searchInputs.returnDate
+      );
       setRoundTripTickets(systemRoundTripTickets);
-    }, 3000);
-    console.log(1);
+    }
 
-    // setSearchInputs({ departureDate: m });
-    console.log(2);
+    // למצוא כרטיס שהיעד והמוצא שלו שווה ליעד של הלקוחוגם תאריך יציאה וחזרה
+
+    // const systemRoundTripTickets = systemTickets(
+    //   searchInputs.destination,
+    //   searchInputs.origin,
+    //   searchInputs.departureDate
+    // );
   };
-  const m = moment(searchInputs.departureDate, "YYYY-DD-MM").format("L");
-
-  console.log(searchInputs.departureDate);
 
   const isValid =
     searchInputs.origin !== "" &&
@@ -95,136 +120,129 @@ const SearchBar = () => {
     (searchInputs.returnDate !== "" || radio === "oneWay");
 
   return (
-    <>
-      <div className={styles.bookingContainer}>
-        <FlightType setRadio={setRadio} radio={radio} />
-        <form
-          className={styles.flightForm}
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
-          <div className={styles.formInputs}>
-            <input
-              type="text"
-              placeholder="Origin "
-              onChange={(e) => {
-                setSuggestionsWrapper(e.target.value, setSuggestionsOrigin);
-                setSearchInputs({ origin: e.target.value });
-              }}
-              value={searchInputs.origin}
-            />
-            {suggestionsOrigin.length > 0 ? (
-              <div className={styles.suggestionorigin}>
-                {suggestionsOrigin &&
-                  suggestionsOrigin.map((suggestion, i) => {
-                    return (
-                      <div
-                        key={i}
-                        onClick={(e) => {
-                          setSuggestionsWrapper([], setSuggestionsOrigin);
-                          setSearchInputs({ origin: e.target.innerHTML });
-                        }}
-                      >
-                        {suggestion.city}
-                      </div>
-                    );
-                  })}
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className={styles.formInputs}>
-            <input
-              type="text"
-              placeholder="Destination "
-              onChange={(e) => {
-                setSuggestionsWrapper(
-                  e.target.value,
-                  setSuggestionsDestination
-                );
-                setSearchInputs({ destination: e.target.value });
-              }}
-              value={searchInputs.destination}
-            />
-            {suggestionsDestination.length > 0 ? (
-              <div className={styles.suggestiondestination}>
-                {suggestionsDestination &&
-                  suggestionsDestination.map((suggestion, i) => {
-                    return (
-                      <div
-                        key={i}
-                        onClick={(e) => {
-                          setSearchInputs({ destination: e.target.innerHTML });
-                          setSuggestionsWrapper([], setSuggestionsDestination);
-                        }}
-                      >
-                        {suggestion.city}
-                      </div>
-                    );
-                  })}
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
+    <div className={mainClass}>
+      <FlightType setRadio={setRadio} radio={radio} />
+      <form
+        className={styles.flightForm}
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <div className={styles.formInputs}>
+          <input
+            type="text"
+            placeholder="Origin "
+            onChange={(e) => {
+              setSuggestionsWrapper(e.target.value, setSuggestionsOrigin);
+              setSearchInputs({ origin: e.target.value });
+            }}
+            value={searchInputs.origin}
+          />
+          {suggestionsOrigin.length > 0 ? (
+            <div className={styles.suggestionorigin}>
+              {suggestionsOrigin &&
+                suggestionsOrigin.map((suggestion, i) => {
+                  return (
+                    <div
+                      key={i}
+                      onClick={(e) => {
+                        setSuggestionsWrapper([], setSuggestionsOrigin);
+                        setSearchInputs({ origin: e.target.innerHTML });
+                      }}
+                    >
+                      {suggestion.city}
+                    </div>
+                  );
+                })}
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className={styles.formInputs}>
+          <input
+            type="text"
+            placeholder="Destination "
+            onChange={(e) => {
+              setSuggestionsWrapper(e.target.value, setSuggestionsDestination);
+              setSearchInputs({ destination: e.target.value });
+            }}
+            value={searchInputs.destination}
+          />
+          {suggestionsDestination.length > 0 ? (
+            <div className={styles.suggestiondestination}>
+              {suggestionsDestination &&
+                suggestionsDestination.map((suggestion, i) => {
+                  return (
+                    <div
+                      key={i}
+                      onClick={(e) => {
+                        setSearchInputs({ destination: e.target.innerHTML });
+                        setSuggestionsWrapper([], setSuggestionsDestination);
+                      }}
+                    >
+                      {suggestion.city}
+                    </div>
+                  );
+                })}
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
 
-          <>
+        <>
+          <div className={styles.formInputs}>
+            <DatePicker
+              placeholderText="Departure"
+              selected={searchInputs.departureDate}
+              onChange={handleChange}
+              dateFormat="dd/MM/yyyy"
+              minDate={new Date()}
+              maxDate={searchInputs.returnDate}
+            ></DatePicker>
+          </div>
+          {radio === "roundTrip" && (
             <div className={styles.formInputs}>
               <DatePicker
-                placeholderText="Departure"
-                selected={searchInputs.departureDate}
-                onChange={handleChange}
-                // dateFormat="dd/MM/yyyy"
-                minDate={new Date()}
-                // maxDate={searchInputs.returnDate}
+                placeholderText="Return"
+                selected={searchInputs.returnDate}
+                onChange={(date) => setSearchInputs({ returnDate: date })}
+                dateFormat="dd/MM/yyyy"
+                minDate={
+                  searchInputs.departureDate !== ""
+                    ? searchInputs.departureDate
+                    : new Date()
+                }
               ></DatePicker>
             </div>
-            {radio === "roundTrip" && (
-              <div className={styles.formInputs}>
-                <DatePicker
-                  placeholderText="Return"
-                  selected={searchInputs.returnDate}
-                  onChange={(date) => setSearchInputs({ returnDate: date })}
-                  // dateFormat="dd/MM/yyyy"
-                  minDate={
-                    searchInputs.departureDate !== ""
-                      ? searchInputs.departureDate
-                      : new Date()
-                  }
-                ></DatePicker>
-              </div>
-            )}
-          </>
-          <div className={styles.formInputs}>
-            <input
-              placeholder="Passengers"
-              type="number"
-              value={searchInputs.passengers}
-              min={1}
-              onChange={(e) => setSearchInputs({ passengers: e.target.value })}
-            />
-          </div>
-          <div
-            className={
-              !isValid
-                ? styles.formInputsSearchDisable
-                : styles.formInputsSearch
-            }
+          )}
+        </>
+        <div className={styles.formInputs}>
+          <input
+            placeholder="Passengers"
+            type="number"
+            value={searchInputs.passengers}
+            min={1}
+            onChange={(e) => setSearchInputs({ passengers: e.target.value })}
+          />
+        </div>
+        <div
+          className={
+            !isValid ? styles.formInputsSearchDisable : styles.formInputsSearch
+          }
+        >
+          <Link
+            to="/flightsResult"
+            className={isValid ? styles.buttonActive : styles.buttonDisable}
+            onClick={searchFlight}
           >
-            <Link
-              to="/flightsResult"
-              className={isValid ? styles.buttonActive : styles.buttonDisable}
-              onClick={searchFlight}
-            >
-              Search Flight
-            </Link>
-          </div>
-        </form>
-        <div className={styles.searchflight}></div>
-      </div>
-    </>
+            Search Flight
+          </Link>
+        </div>
+      </form>
+      <div className={styles.searchflight}></div>
+    </div>
   );
 };
 

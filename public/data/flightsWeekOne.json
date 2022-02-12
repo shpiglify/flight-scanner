@@ -7792,7 +7792,7 @@
     "aircraft": "Boeing 737-900"
   },
   {
-    "date": "02/25/2022",
+    "date": "19/02/2022",
     "id": 243,
     "flightNumber": "LY5059",
     "departure": "16:35",
@@ -7800,22 +7800,6 @@
     "destination": "Tel Aviv",
     "originCode": "DXB",
     "origin": "Dubai",
-    "destinationCode": "TLV",
-    "airlineLogo": "https://dealandgo.co.il/img/airlines/ELY.png",
-    "airline": "Elal",
-    "stops": "non-Stop",
-    "FlightDuration": "02h 58m",
-    "aircraft": "Boeing 737-900"
-  },
-  {
-    "date": "02/25/2022",
-    "id": 243,
-    "flightNumber": "LY5059",
-    "departure": "16:35",
-    "arrival": "20:45",
-    "destination": "Dubai",
-    "originCode": "DXB",
-    "origin": "Tel Aviv",
     "destinationCode": "TLV",
     "airlineLogo": "https://dealandgo.co.il/img/airlines/ELY.png",
     "airline": "Elal",

@@ -21,32 +21,35 @@ function OneWayTickets({ setUserSelectionForOneWay }) {
         <div className={styles.OneWayticket} key={i}>
           <section className={styles.OneWayflightDetails}>
             <div className={styles.OneWayticketOne}>
-              <div className="flight num">
+              <div className={styles.flightNum}>
                 <h4>{ticket.flightNumber}</h4>
+                <div className={styles.airlineLogo}>
+                  <img src={ticket.airlineLogo} />
+                </div>
               </div>
-              <div className="depArvTime">
+              <div className={styles.depArvTime}>
                 <h4>
                   {ticket.departure} - {ticket.arrival}
                 </h4>
               </div>
-              <div className="fromTo">
+              <div className={styles.fromTo}>
                 <h4>{ticket.origin}</h4>
                 <h4>{ticket.destination}</h4>
               </div>
-              <div className="total">
+              <div className={styles.total}>
                 <h4>{ticket.terminal}</h4>
                 <h4>{ticket.FlightDuration}</h4>
               </div>
             </div>
           </section>
           <section className={styles.OneWayflightPrice}>
-            <div className="icon">
+            <div className={styles.icon}>
               <span>icon</span>
             </div>
-            <div className="price">
+            <div className={styles.price}>
               <span>400$</span>
             </div>
-            <div className="button">
+            <div className={styles.button}>
               <Link
                 to="/booking"
                 onClick={() => {
@@ -61,7 +64,14 @@ function OneWayTickets({ setUserSelectionForOneWay }) {
       ))
     : null;
 
-  return <>{oneWayElements}</>;
+  return (
+    <>
+      <div className={styles.resultsForOneWay}>
+        <div className={styles.destination}></div>
+        <div className={styles.results}>{oneWayElements}</div>
+      </div>
+    </>
+  );
 }
 
 export default OneWayTickets;

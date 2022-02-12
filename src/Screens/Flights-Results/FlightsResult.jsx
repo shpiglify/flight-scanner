@@ -5,6 +5,7 @@ import OneWayTickets from "../../components/OneWayTickets/OneWayTickets";
 import RoundTripTickets from "../../components/RoundTripTickets/RoundTripTickets";
 
 import styles from "./FlightsResult.module.css";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 const FlightsResult = ({
   // radio,
@@ -16,24 +17,22 @@ const FlightsResult = ({
   return (
     <>
       <header className={styles.FlightsResultHeader}>
-        <FlightDetails
-        // radio={radio}
-        // setUserSelectionForRoundTrip={setUserSelectionForRoundTrip}
-        />
+        {/* <FlightDetails/> */}
+        <SearchBar mainClass={styles.flightResultSearchBar} />
       </header>
       <main className={styles.FlightsResultContainer}>
         {radio == "roundTrip" ? (
-          <div className={styles.resultsForRoudTrip}>
+          // <div className={styles.resultsForRoudTrip}>
             <RoundTripTickets
               setUserSelectionForRoundTrip={setUserSelectionForRoundTrip}
             />
-          </div>
+          // </div>
         ) : (
-          <div className={styles.resultsForOneWay}>
+          // <div className={styles.resultsForOneWay}>
             <OneWayTickets
               setUserSelectionForOneWay={setUserSelectionForOneWay}
             />
-          </div>
+          // </div>
         )}
       </main>
       <footer className={styles.footer}></footer>
